@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{877814B3-D16C-4969-9C4D-C8C2D9F6771E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>otel_otomasyon</RootNamespace>
+    <AssemblyName>otel_otomasyon</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>giriş_resim.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v18.1" />
+    <Reference Include="DevExpress.Data.v18.1" />
+    <Reference Include="DevExpress.Diagram.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.1" />
+    <Reference Include="DevExpress.Sparkline.v18.1.Core" />
+    <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDiagram.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.1" />
+    <Reference Include="DevExpress.Printing.v18.1.Core" />
+    <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form_klnc_ayar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_klnc_ayar.Designer.cs">
+      <DependentUpon>Form_klnc_ayar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_admin_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_admin_menu.Designer.cs">
+      <DependentUpon>Form_admin_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_giris_ekranı.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_giris_ekranı.Designer.cs">
+      <DependentUpon>Form_giris_ekranı.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_KAYIT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_KAYIT.Designer.cs">
+      <DependentUpon>Form_KAYIT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_kisi_kayıt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_kisi_kayıt.Designer.cs">
+      <DependentUpon>Form_kisi_kayıt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_kisi_kayıt2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_kisi_kayıt2.Designer.cs">
+      <DependentUpon>Form_kisi_kayıt2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_klnc_rezervasyon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_klnc_rezervasyon.Designer.cs">
+      <DependentUpon>Form_klnc_rezervasyon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_kullanıcı_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_kullanıcı_menu.Designer.cs">
+      <DependentUpon>Form_kullanıcı_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_ODA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ODA.Designer.cs">
+      <DependentUpon>Form_ODA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_REZERVASYON.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_REZERVASYON.Designer.cs">
+      <DependentUpon>Form_REZERVASYON.cs</DependentUpon>
+    </Compile>
+    <Compile Include="otomasyon_otel_VTDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>otomasyon_otel_VTDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PersistentClasses1.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form_admin_menu.resx">
+      <DependentUpon>Form_admin_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_giris_ekranı.resx">
+      <DependentUpon>Form_giris_ekranı.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_KAYIT.resx">
+      <DependentUpon>Form_KAYIT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_kisi_kayıt.resx">
+      <DependentUpon>Form_kisi_kayıt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_kisi_kayıt2.resx">
+      <DependentUpon>Form_kisi_kayıt2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_klnc_ayar.resx">
+      <DependentUpon>Form_klnc_ayar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_klnc_rezervasyon.resx">
+      <DependentUpon>Form_klnc_rezervasyon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_kullanıcı_menu.resx">
+      <DependentUpon>Form_kullanıcı_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ODA.resx">
+      <DependentUpon>Form_ODA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_REZERVASYON.resx">
+      <DependentUpon>Form_REZERVASYON.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="otomasyon_otel_VTDataSet.xsc">
+      <DependentUpon>otomasyon_otel_VTDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="otomasyon_otel_VTDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>otomasyon_otel_VTDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="otomasyon_otel_VTDataSet.xss">
+      <DependentUpon>otomasyon_otel_VTDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="giriş_resim.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
