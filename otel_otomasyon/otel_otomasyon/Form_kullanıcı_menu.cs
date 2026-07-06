@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,13 +31,14 @@ namespace otel_otomasyon
         private void Form_kullanıcı_menu_Load(object sender, EventArgs e)
         {
             lbl_kul_ad.Text =  kullanıcıAdı;
+            tcGetir(); // Rezervasyon kontrolü için önce TC numarasını veritabanından çekiyoruz
             if (Rezervasyon_kontrol(tcKimlik))
             {
-                lbl_bilgilendirme.Text = $"SAYIN {kullanıcıAdı} REZERVASYON KAYDINIZ MEVCUTTUR !!! ";
+                lbl_bilgilendirme.Text = $"SAYIN {kullanıcıAdı.ToUpper()} REZERVASYON KAYDINIZ MEVCUTTUR !!! ";
             }
             else
             {
-                lbl_bilgilendirme.Text = $"SAYIN {kullanıcıAdı} REZERVASYON KAYDINIZ BULUNMAMAKTADIR !!! ";
+                lbl_bilgilendirme.Text = $"SAYIN {kullanıcıAdı.ToUpper()} REZERVASYON KAYDINIZ BULUNMAMAKTADIR !!! ";
             }
         }
 
@@ -70,21 +71,28 @@ namespace otel_otomasyon
 
 
 
-             void tcGetir()    //bu kısım kullanıcı adından kayıtlı olan tc numarasını fetiriyor
-             {
+        void tcGetir()    // Kullanıcı adından kayıtlı olan TC kimlik numarasını getirir
+        {
+            try
+            {
                 baglantı.Open();
-                // Kullanıcı adına göre TC kimlik numarasını almak için SQL sorgusu
                 SqlCommand komut = new SqlCommand("SELECT tc_kimlik FROM Kullanıcılar WHERE kullanıcı_ad = @musteri", baglantı);
-                komut.Parameters.AddWithValue("@musteri", musteri);  // Kullanıcı adı parametresi
-                // Sorguyu çalıştırıyoruz ve TC'yi alıyoruz
+                komut.Parameters.AddWithValue("@musteri", musteri);
                 object tcResult = komut.ExecuteScalar();
-                // Eğer sonuç null değilse, TC numarasını kullanıyoruz
                 if (tcResult != null)
                 {
-                    tcKimlik = tcResult.ToString();  // TC kimlik numarasını alıyoruz ve String'e atıyoruz
-                    //MessageBox.Show("Kullanıcıya ait TC Kimlik Numarası: " + tcKimlik);                     //çalışıyormu diye kontrol etmek için
+                    tcKimlik = tcResult.ToString();
                 }
-             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("TC Kimlik getirme hatası: " + ex.Message);
+            }
+            finally
+            {
+                baglantı.Close(); // Bağlantının kapatıldığından emin oluyoruz
+            }
+        }
 
 
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -151,7 +151,6 @@ namespace otel_otomasyon
 
                 if (lbl_kademe.Text == "1") //kademe 1 ise bu işlemleri yapar
                 {
-                    bilgi_getir();
                     bilgi_güncelle();
                     veri_getir();
                     temizle();

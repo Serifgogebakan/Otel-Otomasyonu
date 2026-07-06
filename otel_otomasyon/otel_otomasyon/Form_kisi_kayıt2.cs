@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -120,6 +120,7 @@ namespace otel_otomasyon
         bool tc_kontrol = false;
         bool kullanıcı_adı_kontrol = false;
 
+        // TC Kimlik numarasının veri tabanında olup olmadığını kontrol eder
         void kimlik_kontrol()
         {
             baglantı.Open();
@@ -128,15 +129,16 @@ namespace otel_otomasyon
             SqlDataReader oku = komut.ExecuteReader();
             if (oku.Read())
             {
-                tc_kontrol = true;  //kayıt varsa 
+                tc_kontrol = true;  // Kayıt mevcut
             }
             else
             {
-                tc_kontrol = false;    //kayıt yoksa
+                tc_kontrol = false; // Kayıt yok
             }
             baglantı.Close();
         }
 
+        // Kullanıcı adının veri tabanında olup olmadığını kontrol eder
         void kullanıcı_kontrol()
         {
             baglantı.Open();
@@ -145,11 +147,11 @@ namespace otel_otomasyon
             SqlDataReader oku = komut.ExecuteReader();
             if (oku.Read())
             {
-                tc_kontrol = true;  //kayıt varsa    
+                kullanıcı_adı_kontrol = true;  // Kullanıcı adı mevcut
             }
             else
             {
-                tc_kontrol = false;    //kayıt yoksa
+                kullanıcı_adı_kontrol = false; // Kullanıcı adı yok
             }
             baglantı.Close();
         }
@@ -219,84 +221,72 @@ namespace otel_otomasyon
 
 
 
-        private void btn_tamamla_Click(object sender, EventArgs e)     //tamamla butonuna bastıktan sonra oluşacak wksikliklere göre ekrana hata yazısı getiriyor yada tamamlanmasını sağlıyor
+        // Tamamla butonuna tıklandığında doğrulama işlemlerini yapar ve kaydı tamamlar ya da günceller
+        private void btn_tamamla_Click(object sender, EventArgs e)
         {
             if (text_KullanıcıAdı.Text != "" && text_sifre.Text != "" && text_sifre_tekrar.Text != "")
             {
-
-                if (text_sifre.Text == text_sifre_tekrar.Text)   //tekrar girilen şifre, şifreye eşit değilse hata mesajı veriyor hata yoksa sabite eşitliyor 
+                if (text_sifre.Text == text_sifre_tekrar.Text)   // Şifreler uyuşuyorsa
                 {
                     kullanıcıadı = text_KullanıcıAdı.Text;
                     sifre = text_sifre.Text;
                     yetkiler = lbl_yetki.Text;
 
-                    //MessageBox.Show(tc +""+isim);                   çalışıyorm diye kontrol etmek için
-                    //MessageBox.Show(kullanıcıadı + "" + sifre);
-
                     if (lbl_kademe2.Text == "3")
                     {
-
-                        DialogResult secim = new DialogResult();
-                        secim = MessageBox.Show("BU KAYIT ÜZERİNDE YAPTIĞINIZ DEĞİŞİKLİKLERİ ONAYLIYORMUSUNUZ !!!", "KAYIT GÜNCELLEME", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult secim = MessageBox.Show("BU KAYIT ÜZERİNDE YAPTIĞINIZ DEĞİŞİKLİKLERİ ONAYLIYORMUSUNUZ !!!", "KAYIT GÜNCELLEME", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (secim == DialogResult.Yes)
                         {
                             kayıt_güncelleme();
-                            MessageBox.Show("VERİLERİNİZ BAŞARIYLA GÜNCELLENMİŞTİR GİRİŞ EKRANINA YÖNLENDİRİLİYORSUNUZ");
+                            MessageBox.Show("VERİLERİNİZ BAŞARIYLA GÜNCELLENMİŞTİR, GİRİŞ EKRANINA YÖNLENDİRİLİYORSUNUZ.");
                             this.Close();
                             Form_giris_ekranı frm = new Form_giris_ekranı();
                             frm.Show();
-
                         }
-
                     }
-                    if (lbl_kademe2.Text == "2" )
+                    else if (lbl_kademe2.Text == "2")
                     {
-                        DialogResult secim = new DialogResult();
-                        secim = MessageBox.Show("BU KAYIT ÜZERİNDE YAPTIĞINIZ DEĞİŞİKLİKLERİ ONAYLIYORMUSUNUZ !!!", "KAYIT GÜNCELLEME", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult secim = MessageBox.Show("BU KAYIT ÜZERİNDE YAPTIĞINIZ DEĞİŞİKLİKLERİ ONAYLIYORMUSUNUZ !!!", "KAYIT GÜNCELLEME", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (secim == DialogResult.Yes)
                         {
                             kayıt_güncelleme();
                             this.Close();
                         }
                     }
-                    else if (lbl_kademe2.Text != "2")
+                    else // Yeni Kayıt Ekleme (kademe 0 veya 1)
                     {
-                        kimlik_kontrol();      //veri tabanından tc ye ulaşmak için
-                        kullanıcı_kontrol();    //veri tabanından kullanıcı adına ulaşmak için
-                        if (tc_kontrol == false && kullanıcı_adı_kontrol == false) //eğer ikisinde veri tabanında yoksa kayıt yapılıyor yoksa hata veriyor
-                        {
+                        kimlik_kontrol();       // TC kimlik kontrolü
+                        kullanıcı_kontrol();    // Kullanıcı adı kontrolü
 
+                        if (tc_kontrol == false && kullanıcı_adı_kontrol == false)
+                        {
                             if (lbl_kademe2.Text == "0")
                             {
-                                kayıt_tamamlama();  //veri tabanına bağlanıp verileri veri taabanına kakyıt ediyor
+                                kayıt_tamamlama();
                                 Form_giris_ekranı frm = new Form_giris_ekranı();
-                                frm.Show();   //ilk formu açıyor
+                                frm.Show();
                                 this.Close();
                             }
                             else if (lbl_kademe2.Text == "1")
                             {
-                                kayıt_tamamlama();  //veri tabanına bağlanıp verileri veri taabanına kakyıt ediyor
+                                kayıt_tamamlama();
                                 this.Close();
                             }
                         }
                         else
                         {
-                            MessageBox.Show("GİRİLEN TC KİMLİK NUMARASI VEYA KULLANICI ADI KULLANILMAKTADIR !!");
+                            MessageBox.Show("GİRİLEN TC KİMLİK NUMARASI VEYA KULLANICI ADI ZATEN KULLANILMAKTADIR !");
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("HATA TESPİT EDİLDİ !!!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Girilen Şifreler Aynı Olmak Zorundadır !!!");
+                    MessageBox.Show("Girilen Şifreler Aynı Olmak Zorundadır !");
                 }
             }
             else
             {
-                MessageBox.Show("Lütfen Boş Alanları Doldurunuz !!!"); //herhangi bir alan boş bırakılmışsa bu hata mesajını ekranda gözüküyor
+                MessageBox.Show("Lütfen Boş Alanları Doldurunuz !");
             }
         }
 

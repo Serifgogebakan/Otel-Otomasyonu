@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -164,8 +164,6 @@ namespace otel_otomasyon
             {
                 MessageBox.Show("LÜTFEN BOŞ OLAN ALANLARI DOLDURUNUZ !!!");
             }
-
-            MessageBox.Show(tip + no + tc + giris + cıkıs);    // çalışıyormu diye kontrol etmek için
         }
 
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,23 +41,23 @@ namespace otel_otomasyon
 
 
         public String yetkinlik;
+        
+        // Kullanıcı girişini kontrol eden metod
         void giris_kontrol()
         {
             if (text_KullanıcıAdı.Text != "" && text_sifre.Text != "")
             {
-                baglantı.Open();                      //burada veri tabanına bağlanıp girilen ifade veri tabanındakiyle eşleşiyorsa devam ediyor yoksa else ifadesi çalışıyor
+                baglantı.Open(); // Veritabanı bağlantısı açılıyor
                 SqlCommand komut = new SqlCommand("SELECT * FROM Kullanıcılar WHERE kullanıcı_ad = @p1 AND sifre = @p2 ", baglantı);
                 komut.Parameters.AddWithValue("@p1", text_KullanıcıAdı.Text);
                 komut.Parameters.AddWithValue("@p2", text_sifre.Text);
                 kullanıcıAdı = text_KullanıcıAdı.Text;
-                SqlDataReader oku = komut.ExecuteReader();    //bu kısmı not et  //komut metnini okuyor okuya eşitliyor gibi
+                SqlDataReader oku = komut.ExecuteReader();
 
-                //MessageBox.Show("Giriş İşlemi Yapılıyor");
-                if (oku.Read())                             // ne işe yaradığına bak
+                if (oku.Read())
                 {
-                    yetkinlik = oku["yetki"].ToString().Trim();        //***not***              //bu oku.read dan sonra yazılmalı yoksa hata veriyor
-                    //MessageBox.Show(yetkinlik); //deneme amaçlı
-                    MessageBox.Show("GİRİŞ YAPILIYOR ! LÜTFEN BEKLEYİNİZ !!");    //Trim(); olmazsa açılmıyor ,trim gereksiz boşlukları siliyor
+                    yetkinlik = oku["yetki"].ToString().Trim(); // Yetki değerini alıyoruz (boşlukları temizleyerek)
+                    MessageBox.Show("GİRİŞ YAPILIYOR! LÜTFEN BEKLEYİNİZ...");
 
                     switch (yetkinlik)
                     {
@@ -72,29 +72,23 @@ namespace otel_otomasyon
                             frmKullanıcı.Show();
                             frmKullanıcı.lbl_kul_ad.Text = text_KullanıcıAdı.Text;
                             this.Hide();
-
-                            
-                           
-
                             break;
 
                         default:
                             MessageBox.Show("Yetkinlik değeri geçersiz!");
                             break;
                     }
-
                 }
                 else
                 {
-                    MessageBox.Show("Böyle Bir Kayıt Bulunmamaktadır !! Lütfen Tekrar Deneyiniz !!!");
+                    MessageBox.Show("Böyle bir kayıt bulunmamaktadır! Lütfen tekrar deneyiniz.");
                 }
-                baglantı.Close();
+                baglantı.Close(); // Bağlantı kapatılıyor
             }
             else
             {
-                MessageBox.Show("Lütfen Boş Alanları Doldurunuz");
+                MessageBox.Show("Lütfen boş alanları doldurunuz.");
             }
-        
         }
 
         private void btn_giris_Click(object sender, EventArgs e)
@@ -123,35 +117,6 @@ namespace otel_otomasyon
         {
             lbl_kayıt_ol.ForeColor = System.Drawing.Color.White;
         }
-
-
-
-
-
-        //void yetki_getir()
-        //{
-        //    baglantı.Open();
-        //    OleDbCommand komut = new OleDbCommand("SELECT * FROM Kullanıcılar WHERE kullanıcı_ad = @p1 ", baglantı);
-        //    komut.Parameters.AddWithValue("@p1", text_KullanıcıAdı.Text);  // burada lbl ın textindeki veriyi vt da sorgular eşleşirse o satırı tutar
-        //    OleDbDataReader oku = komut.ExecuteReader();  //eşleeşn satırdan sorgu yapar veri çekebilmemizi sağlar   
-
-        //    //MessageBox.Show("Giriş İşlemi Yapılıyor");  //çalışıyormu diye kontrol etmek için
-
-        //    if (oku.Read())     //lbl kullanıcı textindeki satırdaki verileri burada böyle çekiyoruz
-        //    {
-        //       yetkinlik = oku["yetki"].ToString();  //vt daki kullanıcını tc sini labele eşitler      
-
-        //        //burada yetki 1 ise admin 0 ise personal yazsın onu yapmam lazım
-        //    }
-        //    baglantı.Close();
-        //}
-
-        //private void lbl_kayıt_ol_Click(object sender, EventArgs e)//kayıt olma ekranını açar ve giriş formunu gizeler
-        //{
-        //    Form_kisi_kayıt frm = new Form_kisi_kayıt();
-        //    frm.Show();   //ilk formu açıyor
-        //    this.Hide(); //form ekranını kapatıyor    //giriş formunu gizliyor
-        //}
-    }  
     }
+}
   

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -61,20 +61,16 @@ namespace otel_otomasyon
 
         }
 
+        // Seçili satırdaki kullanıcı kaydını veritabanından siler
         void veri_sil()
         {   
-           baglantı.Open();
-            //SqlCommand komut = new SqlCommand("DELETE FROM Kullanıcılar Where id =@id", baglantı);  //burada veri tabanındaki id yi @id ye eşitledik
-            //komut.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells[0].Value);
-            //komut.ExecuteNonQuery();
-            //baglantı.Close();
-
-            SqlCommand komut = new SqlCommand("DELETE FROM Kullanıcılar Where tc_kimlik =@tc", baglantı);  //burada veri tabanındaki swçilen kısımdaki veriyi siler ,tc_kimlik i @tc ye eşitledik kolaylık olsun diye yoksa aşağıyada yazacaktık
-            komut.Parameters.AddWithValue("@tc", dataGridView1.CurrentRow.Cells[0].Value); //dataGridView'de seçili satırın 2.kısmındaki değer alınarak @tc'ye eşitlenir
-            komut.ExecuteNonQuery();  //şartları gerçekleştirir
-            baglantı.Close();   //baglantıyı sonlandırır
-            veri_getir();     //buradada silindikten sonra veri tabanını çağırı
-        }// Veritabanda seçilen satıradaki verileri silmemizi sağlar 
+            baglantı.Open();
+            SqlCommand komut = new SqlCommand("DELETE FROM Kullanıcılar Where tc_kimlik =@tc", baglantı);
+            komut.Parameters.AddWithValue("@tc", dataGridView1.CurrentRow.Cells[0].Value);
+            komut.ExecuteNonQuery();
+            baglantı.Close();
+            veri_getir(); // Silme işleminden sonra verileri yeniler
+        }
 
        
 
@@ -115,49 +111,16 @@ namespace otel_otomasyon
             frm.sife = dataGridView1.CurrentRow.Cells[8].Value.ToString();
             frm.yeti = dataGridView1.CurrentRow.Cells[9].Value.ToString();
 
-            //if (frm.lbl_kademe.Text == "2")
-            //{
-            //    Form_kisi_kayıt2 frm2 = new Form_kisi_kayıt2();
-            //    frm2.text_KullanıcıAdı.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
-            //    frm2.text_sifre.Text = dataGridView1.CurrentRow.Cells[9].Value.ToString();
-            //    frm2.lbl_yetki.Text = dataGridView1.CurrentRow.Cells[10].Value.ToString();
-            //}
             frm.Show();
         }
 
         private void btn_cıkıs_Click(object sender, EventArgs e)
         {
-            DialogResult secim = new DialogResult();                     //burada çıkış yaparken soru soruyor evet dersek çıkıyor
-            secim = MessageBox.Show("Kayıt Kontrol Ekranını kapatmak istediğinize eminmisiniz !!", "ÇIKIŞ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult secim = MessageBox.Show("Kayıt Kontrol Ekranını kapatmak istediğinize emin misiniz?", "ÇIKIŞ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (secim == DialogResult.Yes)
             {
                 this.Close();
             }
         }
-
-        
-
-
-
-
-
-
-        ////private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
-        ////{
-        ////    //Form_kisi_kayıt frm = new Form_kisi_kayıt();   
-        ////    //frm.text_tc_kimlik_no.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-        ////    //frm.text_kimlik_isim.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-        ////    //frm.text_kimlik_soyisim.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-        ////    //frm.lbl_cinsiyet.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-        ////    //frm.text_kimlik_dogum_tarihi.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-        ////    //frm.text_telefon_numarası.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
-        ////    //frm.text_mail_adresi.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
-
-        ////}
-        ///*bunu data gride basınca direkt verileri eşitleyecek ve seçilen kişilerin bilgileri oraya gidecekti sıkıntı çıktı*/
-
-
-
-
     }
 }

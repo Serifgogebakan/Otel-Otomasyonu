@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -131,27 +131,6 @@ namespace otel_otomasyon
         }
 
 
-        //void veri_güncelle()
-        //{
-        //    baglantı.Open();
-        //    String girdiler = "UPDATE Kullanıcılar SET isim=@isim,soyisim=@soyisim,cinsiyet=@cinsiyet,dogum_tarihi=@dtarihi,tel_no=@telefon,mail_adresi=@mail WHERE tc_kimlik=@tc ";
-        //    SqlCommand komut = new SqlCommand(girdiler, baglantı);  //baglantı veri tabanının yerini gözteriyor / girdiler ilede eğer insert var ise veri tabanına veri kaydetmeye çalışıyoruz
-
-        //    //ikiside aynı olması lazım yoksa veritabanına gitmiyor form ekkanındaki string değerleri yazacağız veri tabanındaki değil gibi duruyor
-        //    komut.Parameters.AddWithValue("@isim", isim);                    //girdiler kısmında ilk kısım veritabanındaki isimler valuesten sonraki kısım formun içindeki string kısım
-        //    komut.Parameters.AddWithValue("@soyisim", soyisim);
-        //    komut.Parameters.AddWithValue("@cinsiyet", cinsiyet);
-        //    komut.Parameters.AddWithValue("@dtarihi", dtarihi);
-        //    komut.Parameters.AddWithValue("@telefon", telefon);
-        //    komut.Parameters.AddWithValue("@mail", mail);
-        //    komut.Parameters.AddWithValue("@tc", tc);
-
-
-        //    komut.ExecuteNonQuery();                                      //veri tabanı sorgusunu çalıştımamıza yarıyor olmazsa olmaz
-        //    baglantı.Close();                                      //veri tabanı bağlantısını sonlandırıyor
-        //    MessageBox.Show("KAYIT GÜNCELLEME İŞLEMİNİZ BAŞARIYLA GERÇEKLEŞTİRİLMİŞTİR.");
-        //}  //hatalı
-
 
         void Kayıt_ilet()
         {
@@ -180,6 +159,7 @@ namespace otel_otomasyon
                     frm.sife = oku["sifre"].ToString();
                     frm.yeti = oku["yetki"].ToString();
                     frm.Show();
+                    this.Close(); // Ayar formunu kapatıyoruz
                 }
                 else
                 {
