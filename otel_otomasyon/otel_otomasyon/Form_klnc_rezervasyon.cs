@@ -19,7 +19,7 @@ namespace otel_otomasyon
         {
             InitializeComponent();
             this.kullanıcıAdı = kullanıcıAdı;
-            
+            StyleHelper.Apply(this);
         }
 
         SqlConnection baglantı = new SqlConnection("Data Source=GOGEBAKAN;Initial Catalog=otomasyon_otel_VT;Integrated Security=True");

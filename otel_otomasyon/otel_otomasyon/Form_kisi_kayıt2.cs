@@ -16,6 +16,7 @@ namespace otel_otomasyon
         public Form_kisi_kayıt2()
         {
             InitializeComponent();
+            StyleHelper.Apply(this);
         }
 
         SqlConnection baglantı = new SqlConnection("Data Source=GOGEBAKAN;Initial Catalog=otomasyon_otel_VT;Integrated Security=True");  //burada veri tabanı nesnesi oluşturuyoruz

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +15,7 @@ namespace otel_otomasyon
         public Form_kisi_kayıt()
         {
             InitializeComponent();
+            StyleHelper.Apply(this);
         }
 
         private void Form_kisi_kayıt_Load(object sender, EventArgs e)

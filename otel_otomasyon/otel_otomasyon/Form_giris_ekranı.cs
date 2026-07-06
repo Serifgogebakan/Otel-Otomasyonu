@@ -15,6 +15,7 @@ namespace otel_otomasyon
         public Form_giris_ekranı()
         {
             InitializeComponent();
+            StyleHelper.Apply(this);
         }
          SqlConnection baglantı = new SqlConnection("Data Source=GOGEBAKAN;Initial Catalog=otomasyon_otel_VT;Integrated Security=True");
 

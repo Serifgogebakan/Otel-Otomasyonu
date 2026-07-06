@@ -16,6 +16,7 @@ namespace otel_otomasyon
         public Form_ODA()
         {
             InitializeComponent();
+            StyleHelper.Apply(this);
         }
 
         SqlConnection baglantı = new SqlConnection("Data Source=GOGEBAKAN;Initial Catalog=otomasyon_otel_VT;Integrated Security=True"); //veri tabanında bağlanacağı yeri gözterir

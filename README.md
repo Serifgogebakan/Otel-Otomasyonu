@@ -6,12 +6,6 @@ Bu proje; otel yöneticilerinin odaları, kayıtları ve rezervasyonları kontro
 
 ---
 
-## 📸 Proje Ön İzleme
-
-![Otel Otomasyonu Dashboard](otel_otomasyon/Resimler/hotel_dashboard_mockup.png)
-
----
-
 ## 🌟 Öne Çıkan Özellikler
 
 ### 🔑 Gelişmiş Kimlik Doğrulama & Giriş Sistemi
